@@ -9,9 +9,9 @@
   The Embedded Experts
 */
 
-static const unsigned char _acClintEastwoodInstrumental[1] =
+static const unsigned char _acClintEastwoodInstrumental[8] =
 {
-    0x00, 0x00
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 };
 
 /*************************** End of file ****************************/
