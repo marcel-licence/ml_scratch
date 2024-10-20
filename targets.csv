@@ -1,0 +1,2 @@
+fqbn;version;config
+espressif:esp32:esp32;latest;PSRAM=disabled\nPARTITION_SCHEME=no_ota
