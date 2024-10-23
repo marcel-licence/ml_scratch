@@ -78,8 +78,14 @@ void setup(void)
     delay(1000);
     Serial.printf("ml_scratch\n");
 
+#if (defined I2C_SDA_PIN) && (defined I2C_SCL_PIN)
     Wire.begin(I2C_SDA_PIN, I2C_SCL_PIN);
+#else
+    Wire.begin();
+#endif
+#ifdef I2C_SPEED
     Wire.setClock(I2C_SPEED);
+#endif
     AS5600_Setup();
 
 #ifdef ML_BOARD_SETUP
@@ -170,7 +176,9 @@ void loop(void)
     memset(left, 0, sizeof(left));
     memset(right, 0, sizeof(right));
 
+#ifdef ESP32
     Audio_Input(left, right);
+#endif
 
     mul(left, app.inputGain, left, SAMPLE_BUFFER_SIZE);
     mul(right, app.inputGain, right, SAMPLE_BUFFER_SIZE);

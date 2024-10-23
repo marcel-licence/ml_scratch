@@ -93,7 +93,7 @@ jobs:
 
   build_rp2040:
 
-    if: false
+    if: true
 
     name: build rp2040
 
@@ -102,7 +102,7 @@ jobs:
     strategy:
       matrix:
         fqbn:
-          - rp2040:rp2040:rpipico
+          - [rp2040:rp2040:rpipico,rp2040:rp2040:rpipico2]
 
     steps:
       - name: Checkout repository

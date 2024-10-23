@@ -65,8 +65,17 @@
 #define SAMPLE_BUFFER_SIZE  48
 
 
+#if (defined ESP32) && (! defined ARDUINO_LOLIN_S2_MINI)
 #define I2C_SDA_PIN 18
 #define I2C_SCL_PIN 23
+#endif
+
+
+#if (defined ARDUINO_ARCH_RP2040) && (!defined __ARM_FEATURE_DSP)
+#define RP2040_AUDIO_PWM
+#endif
+
+
 #define I2C_SPEED 1000000
 
 
