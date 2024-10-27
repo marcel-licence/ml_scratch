@@ -74,8 +74,9 @@ void setup(void)
     /*
      * this code runs once
      */
-    Serial.begin(SERIAL_BAUDRATE);
     delay(1000);
+    Serial.begin(SERIAL_BAUDRATE);
+    delay(3000);
     Serial.printf("ml_scratch\n");
 
 #if (defined I2C_SDA_PIN) && (defined I2C_SCL_PIN)
@@ -124,10 +125,14 @@ void loop_4th(void)
 {
     uint8_t sample_to_scratch = 1;
     AS5600_Loop();
-#if 0
-    printf("%0.3f\n", AS5600_GetPitch(4));
+    float pitch = AS5600_GetPitch(4);
+#if 1
+    if ((pitch > 0.05) || (pitch < - 0.05))
+    {
+        Serial.printf("%0.3f\n", pitch);
+    }
 #endif
-    Scratch_SetPitchAbs(AS5600_GetPitch(4), sample_to_scratch);
+    Scratch_SetPitchAbs(pitch, sample_to_scratch);
 }
 #endif
 
@@ -186,3 +191,4 @@ void loop(void)
 
     Audio_Output(left, right);
 }
+

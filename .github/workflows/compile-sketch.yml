@@ -49,7 +49,7 @@ jobs:
 
   build_esp8266:
 
-    if: false
+    if: true
 
     name: build esp8266
 
